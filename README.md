@@ -174,7 +174,18 @@ VITE_CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
 VITE_CLOUDINARY_UPLOAD_PRESET=your_upload_preset
 ```
 
-## 🗄️ Database Migration
+## � Default Admin Credentials
+
+For initial setup and testing, use these admin credentials:
+
+```
+Email: admin@gmail.com
+Password: Admin@123
+```
+
+**⚠️ Important:** Change the admin password immediately after first login in production environments.
+
+## �🗄️ Database Migration
 
 To migrate data from an old MongoDB database to a new one:
 

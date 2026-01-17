@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "safa-residency-bd4f2",
     "public": "dist",
     "ignore": [
       "firebase.json",

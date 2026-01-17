@@ -36,14 +36,7 @@ export default defineConfig(({ command, mode }) => {
             'forms': ['react-hook-form', 'react-quill'],
             'utils': ['dayjs', 'axios', 'lodash'],
             'i18n': ['i18next', 'react-i18next'],
-            'charts': ['recharts'],
-            'firebase': ['@firebase/auth', 'firebase/app'],
-            'icons': {
-              'icons-tb': ['react-icons/tb'],
-              'icons-fa': ['react-icons/fa'],
-              'icons-bs': ['react-icons/bs'],
-              'icons-hi': ['react-icons/hi']
-            }
+            'charts': ['recharts']
           }
         }
       },

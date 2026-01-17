@@ -268,11 +268,11 @@ This project is licensed under the ISC License.
 
 ## 👥 Team
 
-- **Developer** - [Ahnabu](https://github.com/Ahnabu)
+- **Developer** - [Abu Horaira](https://github.com/Ahnabu) ,[Habib](https://github.com/habib-153) 
 
 ## 📞 Contact & Support
 
-- **Email**: safa.residency.bd@gmail.com
+- **Email**: syedmdabuhoraira@gmail.com
 - **GitHub Issues**: [Create an issue](https://github.com/Ahnabu/safa-residency/issues)
 
 ## 🙏 Acknowledgments

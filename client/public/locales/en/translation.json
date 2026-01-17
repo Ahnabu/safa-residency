@@ -38,12 +38,12 @@
         "name": "Safa Residency",
         "street": "House -08,Road -20, Nikunja 2",
         "area": "Commercial Area, Airport Road, Khilkhet, Dhaka, Bangladesh, Dhaka-1229",
-        "phone": "Tel: +8801831-335222"
+        "phone": "Tel: +8801831-111111"
       },
       "airport": {
         "title": "Hazrat Shahjalal International Airport",
         "distance": "Distance from Property: 2.0 KM",
-        "phone": "Phone Number: +8801831-335222"
+        "phone": "Phone Number: +8801831-111111"
       },
       "transport": {
         "title": "Other Transportation",
@@ -75,7 +75,7 @@
         },
         "reservation": {
           "question": "How can I make a hotel reservation?",
-          "answer": "You can make a reservation by visiting our website, sending an email to info@safaresidency.com, or calling +8801831-335222. Our team is eager to assist you in planning your stay."
+          "answer": "You can make a reservation by visiting our website, sending an email to info@hotel.com, or calling +8801831-111111. Our team is eager to assist you in planning your stay."
         },
         "cancellation": {
           "question": "What is the cancellation policy for individual bookings?",
@@ -109,9 +109,9 @@
     },
     "Footer": {
       "address": "House -08,Road -20, Nikunja 2, Commercial Area, Airport Road, Khilkhet, Dhaka, Bangladesh, Dhaka-1229",
-      "support": "Support: info@safaresidency.com",
+      "support": "Support: info@hotel.com",
       "availability": "Available: 24 hours",
-      "phone": "Tel: +8801831-335222",
+      "phone": "Tel: +8801831-111111",
       "followUs": "Follow Us",
       "home": "Home",
       "aboutUs": "About Us",

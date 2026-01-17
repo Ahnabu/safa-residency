@@ -12,12 +12,10 @@ import { fadeIn } from "../../utils/varients";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
 import { useTranslation } from "react-i18next";
-import accommodationBanner from "../../assets/accomodation_banner.jpg"
+import accommodationBanner from "../../assets/accomodation_banner.jpg";
 
 const Accommodation = () => {
-  const { categories } = useSelector(
-    (state) => state.filter
-  );
+  const { categories } = useSelector((state) => state.filter);
   const { data, isLoading } = useGetAllRoomQuery({
     categories,
     page: 1,
@@ -66,10 +64,10 @@ const Accommodation = () => {
 
   const getUniqueRoomsByCategory = (rooms) => {
     if (!rooms) return [];
-    
+
     const categoryMap = new Map();
-    
-    rooms.forEach(room => {
+
+    rooms.forEach((room) => {
       if (!categoryMap.has(room?.category)) {
         categoryMap.set(room?.category, room);
       }
@@ -112,9 +110,7 @@ const Accommodation = () => {
         />
       </Helmet>
       <div className="max-w-screen-3xl mx-auto">
-        <ParallaxSection
-          backgroundImage={accommodationBanner}
-        />
+        <ParallaxSection backgroundImage={accommodationBanner} />
         {/* header  */}
         <div className="text-center my-2">
           <div className="bg pt-4 pb-4 md:pb-6 lg:pb-8">
@@ -177,15 +173,15 @@ const Accommodation = () => {
         {/* cards  */}
 
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 md:gap-8 lg:gap-12 3xl:gap-16  mt-4 md:mt-6 lg:mt-8 p-1 md:p-6 overflow-hidden ">
-        {getUniqueRoomsByCategory(data?.data)?.map((card, index) => (
-          <motion.div
-            variants={fadeIn("left", 0.1)}
-            initial={"hidden"}
-            whileInView={"show"}
-            viewport={{ once: true, amount: 0.7 }}
-            key={index}
-            className="w-[340px] sm:w-[520px] mx-auto overflow-hidden rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
-          >
+          {getUniqueRoomsByCategory(data?.data)?.map((card, index) => (
+            <motion.div
+              variants={fadeIn("left", 0.1)}
+              initial={"hidden"}
+              whileInView={"show"}
+              viewport={{ once: true, amount: 0.7 }}
+              key={index}
+              className="w-[340px] sm:w-[520px] mx-auto overflow-hidden rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+            >
               <div className="relative">
                 <div
                   className="w-full h-72 object-cover transition-transform duration-300 transform hover:scale-110 text-start p-4"
@@ -202,7 +198,7 @@ const Accommodation = () => {
               </div>
               <div className="px-6 py-4 bg-white">
                 <h3 className="mb-2 text-xl font-bold  transition-colors duration-300 text-start ">
-                {card?.category}
+                  {card?.category}
                 </h3>
                 <p className="text-sm text-start">
                   {card?.beds_and_bedding?.beds}

@@ -15,13 +15,13 @@ const Footer = () => {
             </p>
           </aside>
           <div className="flex flex-col gap-2">
-            <a href="mailto:info@safaresidency.com">
+            <a href="mailto:info@hotel.com">
               {t("home.Footer.support")}
             </a>
             <br />
             {t("home.Footer.availability")}
             <br />
-            <a href="tel:+8801831-335222">{t("home.Footer.phone")}</a>
+            <a href="tel:+8801831-111111">{t("home.Footer.phone")}</a>
           </div>
           <nav className="flex flex-col gap-2">
             <a href="/" className="link link-hover">
@@ -38,11 +38,11 @@ const Footer = () => {
           <nav className="flex flex-col gap-2">
             <p>{t("home.Footer.followUs")}</p>
             <div className="flex gap-3">
-              <a href="https://www.instagram.com/hotel.safa.residency/">
+              <a href="https://www.instagram.com/">
                 <BsInstagram className="text-gold h-6 w-6" />
               </a>
 
-              <a href="https://www.facebook.com/profile.php?id=61567457130853">
+              <a href="https://www.facebook.com/">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"

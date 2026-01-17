@@ -22,12 +22,12 @@ const BookingCancelModal = ({ visible, onClose, onCancel }) => {
         <Alert color="red" icon={<FaExclamationCircle />} className="mb-4">
           Please Contact with the Manager to cancel the booking.
           <p className="text-xl font-semibold text-center">
-            Tel:<a href="tel:+8801831-335222"> +8801831-335222 </a>
+            Tel:<a href="tel:+8801831-111111"> +8801831-111111 </a>
           </p>
           <p className="text-xl font-semibold text-center">
             Email:{" "}
-            <a href="mailto:info@safaresidency.com">
-              info@safaresidency.com
+            <a href="mailto:info@hotel.com">
+              info@hotel.com
             </a>
           </p>
         </Alert>

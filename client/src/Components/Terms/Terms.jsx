@@ -103,7 +103,7 @@ const TermsAndConditions = () => {
                   <br />
                   Phone: +8801831335222
                   <br />
-                  Email: info@safaresidency.com
+                  Email: info@hotel.com
                 </p>
               </section>
 
@@ -363,7 +363,7 @@ const TermsAndConditions = () => {
                   <br />
                   Corporate Guest Historian
                   <br />
-                  Email: info@safaresidency.com
+                  Email: info@hotel.com
                   <br />
                   Phone: +8801831335222
                   <br />

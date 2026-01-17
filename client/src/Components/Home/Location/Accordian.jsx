@@ -53,7 +53,7 @@ export function AccordionCustomIcon() {
               {t("home.Location.airport.distance")} <br />
             </p>
             <p className="text-white text-sm md:text-base">
-              Phone Number: +8801831-335222
+              Phone Number: +8801831-111111
             </p>
           </div>
         </AccordionBody>

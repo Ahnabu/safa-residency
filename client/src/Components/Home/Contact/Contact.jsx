@@ -41,7 +41,7 @@ const ContactForm = () => {
 
   const handleSubmit = async (values) => {
     try {
-      await fetch("https://formsubmit.co/info@safaresidency.com", {
+      await fetch("https://formsubmit.co/info@hotel.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -213,7 +213,7 @@ const ContactForm = () => {
                     {t("Contact.emailUs")}
                   </Typography>
                   <Typography variant="paragraph" className="opacity-80">
-                    info@safaresidency.com
+                    info@hotel.com
                     <br />
                     {t("Contact.responseTime")}
                   </Typography>
@@ -231,7 +231,7 @@ const ContactForm = () => {
                     {t("Contact.callUs")}
                   </Typography>
                   <Typography variant="paragraph" className="opacity-80">
-                    +8801831-335222
+                    +8801831-111111
                     <br />
                     {t("Contact.mondayToFriday")}
                   </Typography>

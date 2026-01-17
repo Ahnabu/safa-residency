@@ -104,13 +104,13 @@ const generateBookingTemplate = (data, isAdmin = false) => {
                         <td style="color: #666;">PHONE</td>
                         <td>: ${data.phone || 'N/A'}</td>
                         <td style="color: #666;">PHONE</td>
-                        <td>: +8801831-335222</td>
+                        <td>: +8801831-111111</td>
                     </tr>
                     <tr>
                         <td style="color: #666;">E-MAIL</td>
                         <td>: ${data.email || 'N/A'}</td>
                         <td style="color: #666;">E-MAIL</td>
-                        <td>: info@safaresidency.com</td>
+                        <td>: info@hotel.com</td>
                     </tr>
                     <tr>
                         <td style="color: #666;">SOURCE</td>
@@ -448,7 +448,7 @@ exports.EmailHelper = {
         // Send to user
         yield sendMailWithTemplate(data.email, 'Booking Confirmation - Safa Residency', generateBookingTemplate(data));
         // Send to admin
-        yield sendMailWithTemplate('info@safaresidency.com', 'Confirm New Booking - Safa Residency', generateBookingTemplate(data, true));
+        yield sendMailWithTemplate('info@hotel.com', 'Confirm New Booking - Safa Residency', generateBookingTemplate(data, true));
     }),
     // Status update email
     sendStatusUpdateEmail: (data) => __awaiter(void 0, void 0, void 0, function* () {

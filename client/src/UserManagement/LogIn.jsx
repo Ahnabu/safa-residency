@@ -31,7 +31,13 @@ const Login = () => {
       const res = await dispatch(loginUser({email, password, getToken}))
       if(res?.type === "authSlice/loginUser/fulfilled"){
         toast.success("Log In Successful", { id: toastId, duration: 2000 });
-        navigate(from);
+        // Redirect based on user role
+        const userRole = res?.payload?.user?.role;
+        if (userRole) {
+          navigate(`/${userRole}/dashboard`);
+        } else {
+          navigate(from);
+        }
       }else{
         toast.error("Something went wrong", { id: toastId, duration: 2000 });
       }
@@ -57,7 +63,13 @@ const Login = () => {
   const handleGoogleLogin = async() => {
     const res = await dispatch(loginWithGoogle(getToken));
     if(res?.type === "authSlice/loginWithGoogle/fulfilled") {
-      navigate(from);
+      // Redirect based on user role
+      const userRole = res?.payload?.user?.role;
+      if (userRole) {
+        navigate(`/${userRole}/dashboard`);
+      } else {
+        navigate(from);
+      }
       toast.success("Login Successful");
     }
   };

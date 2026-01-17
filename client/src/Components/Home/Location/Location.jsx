@@ -12,7 +12,7 @@ const Location = () => {
           <p className="text-sm md:text-base">
           {t("home.Location.address.street")}, {t("home.Location.address.area")}
           </p>
-          <p className="text-sm md:text-base">Tel: +8801831-335222</p>
+          <p className="text-sm md:text-base">Tel: +8801831-111111</p>
           <AccordionCustomIcon />
         </div>
         <div className="lg:w-[60%]">

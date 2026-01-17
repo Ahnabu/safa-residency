@@ -143,13 +143,13 @@ const generateBookingTemplate = (
                         <td style="color: #666;">PHONE</td>
                         <td>: ${data.phone || 'N/A'}</td>
                         <td style="color: #666;">PHONE</td>
-                        <td>: +8801831-335222</td>
+                        <td>: +8801831-111111</td>
                     </tr>
                     <tr>
                         <td style="color: #666;">E-MAIL</td>
                         <td>: ${data.email || 'N/A'}</td>
                         <td style="color: #666;">E-MAIL</td>
-                        <td>: info@safaresidency.com</td>
+                        <td>: info@hotel.com</td>
                     </tr>
                     <tr>
                         <td style="color: #666;">SOURCE</td>
@@ -499,7 +499,7 @@ export const EmailHelper = {
 
     // Send to admin
     await sendMailWithTemplate(
-      'info@safaresidency.com',
+      'info@hotel.com',
       'Confirm New Booking - Safa Residency',
       generateBookingTemplate(data, true),
     );

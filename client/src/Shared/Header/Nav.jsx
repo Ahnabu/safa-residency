@@ -29,11 +29,11 @@ const Nav = () => {
             </Link>
             <div className="w-2/5 sm:w-2/3 flex justify-end pr-3 items-center gap-8">
               <a
-                href="mailto:info@safaresidency.com"
+                href="mailto:info@hotel.com"
                 className="hidden sm:flex justify-center items-center gap-2 hover:text-gold transition"
               >
                 <FaRegEnvelopeOpen className="text-gold" />
-                <p className="">info@safaresidency.com</p>
+                <p className="">info@hotel.com</p>
               </a>
 
               <a
@@ -41,7 +41,7 @@ const Nav = () => {
                 className="hidden lg:flex justify-center items-center gap-2 hover:text-gold transition"
               >
                 <MdOutlinePhone className="text-gold text-lg" />
-                <p>+8801831-335222</p>
+                <p>+8801831-111111</p>
               </a>
             </div>
           </div>

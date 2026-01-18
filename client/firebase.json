@@ -13,7 +13,7 @@
         "headers": [
           {
             "key": "Content-Security-Policy",
-            "value": "default-src 'self'; font-src 'self' https://fonts.gstatic.com data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src 'self' https://safa-residency-backend.vercel.app https://*.firebaseapp.com https://*.firebase.com https://*.googleapis.com https://cloudinary.com https://*.cloudinary.com; frame-src https://*.firebaseapp.com https://accounts.google.com; img-src 'self' data: https: blob:;"
+            "value": "default-src 'self'; font-src 'self' https://fonts.gstatic.com data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://apis.google.com https://*.googleapis.com; connect-src 'self' https://safa-residency-backend.vercel.app https://*.web.app https://*.firebaseapp.com https://*.firebase.com https://*.googleapis.com https://identitytoolkit.googleapis.com https://cloudinary.com https://*.cloudinary.com; frame-src https://*.firebaseapp.com https://accounts.google.com; img-src 'self' data: https: blob:;"
           }
         ]
       }

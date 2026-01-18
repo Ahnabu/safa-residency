@@ -174,13 +174,26 @@ VITE_CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
 VITE_CLOUDINARY_UPLOAD_PRESET=your_upload_preset
 ```
 
-## � Default Admin Credentials
+## 🔐 Default Credentials
 
-For initial setup and testing, use these admin credentials:
+For initial setup and testing, use these credentials:
 
+### Admin
 ```
-Email: admin1@gmail.com
+Email: admin@hotel.com
 Password: Admin@123
+```
+
+### Staff
+```
+Email: employee@hotel.com
+Password: Admin@123
+```
+
+### Test User
+```
+Email: testuser1@hotel.com
+Password: Test@123
 ```
 
 ## 📡 API Documentation

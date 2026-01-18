@@ -183,22 +183,6 @@ Email: admin1@gmail.com
 Password: Admin@123
 ```
 
-**⚠️ Important:** Change the admin password immediately after first login in production environments.
-
-## �🗄️ Database Migration
-
-To migrate data from an old MongoDB database to a new one:
-
-```bash
-cd server
-
-# Update database URLs in migrate-db.js
-node migrate-db.js
-
-# Verify migration
-node verify-migration.js
-```
-
 ## 📡 API Documentation
 
 ### Authentication Endpoints

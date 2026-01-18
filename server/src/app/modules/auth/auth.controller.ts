@@ -73,11 +73,38 @@ const getAdminStats = catchAsync(async(req, res)=>{
     })
 })
 
+const updateOwnProfile = catchAsync(async(req, res)=>{
+    const { email } = req.user;
+    const result = await AuthService.updateOwnProfile(email, req.body);
+    
+    sendResponse(res, {
+        success: true,
+        statusCode: httpStatus.OK,
+        message: 'Profile updated successfully',
+        data: result
+    })
+})
+
+const updatePassword = catchAsync(async(req, res)=>{
+    const { email } = req.user;
+    const { currentPassword, newPassword } = req.body;
+    const result = await AuthService.updatePassword(email, currentPassword, newPassword);
+    
+    sendResponse(res, {
+        success: true,
+        statusCode: httpStatus.OK,
+        message: 'Password updated successfully',
+        data: result
+    })
+})
+
 export const AuthController = {
     getToken,
     getAllUser,
     updateUser,
     getUserByEmail,
     deleteUser,
-    getAdminStats
+    getAdminStats,
+    updateOwnProfile,
+    updatePassword
 }

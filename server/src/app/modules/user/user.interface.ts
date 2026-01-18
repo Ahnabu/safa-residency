@@ -10,5 +10,6 @@ export type TUser = {
     role?: TRole;
     phone?: string;
     address?: string;
-    status?: TUserStatus
+    status?: TUserStatus;
+    password?: string;
 }

@@ -12,6 +12,24 @@ const createUserValidationSchema = z.object({
     })
 })
 
+const updateUserProfileValidationSchema = z.object({
+    body: z.object({
+        name: z.string().optional(),
+        image: z.string().optional(),
+        phone: z.string().optional(),
+        address: z.string().optional()
+    })
+})
+
+const updatePasswordValidationSchema = z.object({
+    body: z.object({
+        currentPassword: z.string({required_error: 'current password is required'}),
+        newPassword: z.string({required_error: 'new password is required'}).min(6, 'Password must be at least 6 characters')
+    })
+})
+
 export const UserValidation = {
-    createUserValidationSchema
+    createUserValidationSchema,
+    updateUserProfileValidationSchema,
+    updatePasswordValidationSchema
 }

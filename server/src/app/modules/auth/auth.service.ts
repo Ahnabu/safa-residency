@@ -77,6 +77,44 @@ const deleteUserFromDB = async (id: string) => {
   return result;
 }
 
+const updateOwnProfile = async (email: string, payload: Partial<TUser>) => {
+  // Prevent users from updating sensitive fields
+  const { role, membershipNumber, points, status, password, ...safePayload } = payload;
+  
+  const result = await User.findOneAndUpdate(
+    { email },
+    safePayload,
+    { new: true }
+  );
+
+  return result;
+};
+
+const updatePassword = async (email: string, currentPassword: string, newPassword: string) => {
+  const user = await User.findOne({ email }).select('+password');
+  
+  if (!user) {
+    throw new Error('User not found');
+  }
+
+  // If user has no password set (OAuth login), allow setting password
+  if (user.password) {
+    const bcrypt = await import('bcrypt');
+    const isPasswordValid = await bcrypt.compare(currentPassword, user.password);
+    
+    if (!isPasswordValid) {
+      throw new Error('Current password is incorrect');
+    }
+  }
+
+  // Hash and update new password
+  const bcrypt = await import('bcrypt');
+  user.password = await bcrypt.hash(newPassword, 10);
+  await user.save();
+
+  return { message: 'Password updated successfully' };
+};
+
 const adminStats = async () => {
   // Total income from bookings
   const totalIncomeResult = await Booking.aggregate([
@@ -177,5 +215,7 @@ export const AuthService = {
   getUserFromDB,
   updateUserIntoDB,
   deleteUserFromDB,
+  updateOwnProfile,
+  updatePassword,
   adminStats
 };

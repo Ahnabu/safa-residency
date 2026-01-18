@@ -192,4 +192,4 @@ Contributions, issues, and feature requests are welcome!
 
 ## 📧 Support
 
-For support, email safa.residency.bd@gmail.com
+For support, email syedmdabuhoraira@gmail.com

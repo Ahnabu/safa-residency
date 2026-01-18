@@ -17,6 +17,7 @@ const getToken = catchAsync(async(req, res) => {
 })
 
 const login = catchAsync(async(req, res) => {
+    console.log('Login request body:', req.body);
     const { user, token } = await AuthService.login(req.body);
 
     sendResponse(res, {

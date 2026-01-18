@@ -4,6 +4,7 @@ export const getTokenFromDB = async (user, getToken, payload) => {
     name: user?.displayName,
     image: user?.photoURL ? user.photoURL : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
     phone: payload?.phoneNumber,
+    password: payload?.password, // Include password for email/password signups
   };
 
   const res = await getToken(userInfo);

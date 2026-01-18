@@ -11,6 +11,7 @@ import AppError from '../../errors/AppError';
 import httpStatus from 'http-status';
 
 const getToken = async (payload: Partial<TUser>) => {
+  console.log('getToken called with payload:', payload);
   const user = await User.findOne({ email: payload.email });
 
   if (!user) {
@@ -23,8 +24,18 @@ const getToken = async (payload: Partial<TUser>) => {
       nextMembershipNumber = `SAFA${String(lastNumber + 1).padStart(6, '0')}`;
     }
 
+    // Hash password if provided
+    let hashedPassword = undefined;
+    if (payload.password) {
+      hashedPassword = await bcrypt.hash(payload.password, 10);
+    }
+
     // Create the new user with the generated membership number
-    const newUser = await User.create({ ...payload, membershipNumber: nextMembershipNumber });
+    const newUser = await User.create({ 
+      ...payload, 
+      password: hashedPassword,
+      membershipNumber: nextMembershipNumber 
+    });
 
     const jwtPayload = {
       email: newUser.email,
@@ -34,6 +45,7 @@ const getToken = async (payload: Partial<TUser>) => {
       expiresIn: config.jwt_expires_in as string,
     });
 
+    console.log('New user created with password:', !!hashedPassword);
     return { token, user: newUser };
   } else {
     const jwtPayload = {
@@ -44,6 +56,7 @@ const getToken = async (payload: Partial<TUser>) => {
       expiresIn: config.jwt_expires_in as string,
     });
 
+    console.log('Existing user, has password:', !!user.password);
     return { token, user };
   }
 };
@@ -63,7 +76,13 @@ const getAllUserFromDB = async (query: Record<string, unknown>) => {
 };
 
 const login = async (payload: { email: string; password: string }) => {
+  console.log('Login service called with:', payload);
   const user = await User.findOne({ email: payload.email }).select('+password');
+  
+  console.log('User found:', user ? 'Yes' : 'No');
+  if (user) {
+    console.log('User has password:', user.password ? 'Yes' : 'No');
+  }
 
   if (!user) {
     throw new AppError(httpStatus.UNAUTHORIZED, 'Invalid email or password');
@@ -77,6 +96,7 @@ const login = async (payload: { email: string; password: string }) => {
   }
 
   const isPasswordValid = await bcrypt.compare(payload.password, user.password);
+  console.log('Password valid:', isPasswordValid);
 
   if (!isPasswordValid) {
     throw new AppError(httpStatus.UNAUTHORIZED, 'Invalid email or password');

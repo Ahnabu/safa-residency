@@ -179,7 +179,7 @@ VITE_CLOUDINARY_UPLOAD_PRESET=your_upload_preset
 For initial setup and testing, use these admin credentials:
 
 ```
-Email: admin@gmail.com
+Email: admin1@gmail.com
 Password: Admin@123
 ```
 

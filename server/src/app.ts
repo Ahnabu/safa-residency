@@ -13,7 +13,8 @@ app.use(express.urlencoded());
 const allowedOrigins = [
   'https://safa-residency-bd4f2.firebaseapp.com',
   'https://safa-residency-bd4f2.web.app',
-  'https://safaresidency.com',
+  'safa-residency-bd4f2.firebaseapp.com',
+  'safa-residency-bd4f2.web.app',
   'http://localhost:5173'
 ];
 

@@ -67,7 +67,7 @@ const sendMailWithTemplate = async (
 ) => {
   const transporter = createTransporter();
   await transporter.sendMail({
-    from: '"Safa Residency" <safa.residency.bd@gmail.com>',
+    from: '"Safa Residency" <syedmdabuhoraira@gmail.com>',
     to,
     subject,
     html: htmlContent,

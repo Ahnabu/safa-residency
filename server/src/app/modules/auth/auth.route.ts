@@ -11,6 +11,7 @@ router.get('/auth', (req, res) => {
 });
 
 router.post('/auth', validateRequest(UserValidation.createUserValidationSchema), AuthController.getToken)
+router.post('/login', validateRequest(UserValidation.loginValidationSchema), AuthController.login)
 
 router.get('/users', AuthController.getAllUser)
 router.get('/admin', auth('admin', 'staff'), AuthController.getAdminStats)

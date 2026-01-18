@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import { TbFidgetSpinner } from "react-icons/tb";
 import { useState } from "react";
 import { loginUser, loginWithGoogle, resetPassword, toggleLoading } from "../redux/features/auth/authSlice";
-import { useGetTokenMutation } from "../redux/features/auth/authApi";
+import { useLoginMutation, useGetTokenMutation } from "../redux/features/auth/authApi";
 import { useTranslation } from "react-i18next";
 
 
@@ -14,6 +14,7 @@ const Login = () => {
   const location = useLocation();
   const from = location?.state || "/";
   const dispatch = useDispatch();
+  const [login] = useLoginMutation()
   const [getToken] = useGetTokenMutation()
   const loading = useSelector((state) => state.auth.loading);
   const [email, setEmail] = useState("");
@@ -28,7 +29,7 @@ const Login = () => {
     const toastId = toast.loading("Log In...");
     try {
       dispatch(toggleLoading(true));
-      const res = await dispatch(loginUser({email, password, getToken}))
+      const res = await dispatch(loginUser({email, password, getToken: login, useBackendAuth: true}))
       if(res?.type === "authSlice/loginUser/fulfilled"){
         toast.success("Log In Successful", { id: toastId, duration: 2000 });
         // Redirect based on user role

@@ -6,6 +6,9 @@ import { Service } from '../service/service.model';
 import { TUser } from '../user/user.interface';
 import { User } from '../user/user.model';
 import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
+import AppError from '../../errors/AppError';
+import httpStatus from 'http-status';
 
 const getToken = async (payload: Partial<TUser>) => {
   const user = await User.findOne({ email: payload.email });
@@ -57,6 +60,42 @@ const getAllUserFromDB = async (query: Record<string, unknown>) => {
   const meta = await users.countTotal();
 
   return { result, meta };
+};
+
+const login = async (payload: { email: string; password: string }) => {
+  const user = await User.findOne({ email: payload.email }).select('+password');
+
+  if (!user) {
+    throw new AppError(httpStatus.UNAUTHORIZED, 'Invalid email or password');
+  }
+
+  if (!user.password) {
+    throw new AppError(
+      httpStatus.BAD_REQUEST,
+      'Please use Google login or set a password first'
+    );
+  }
+
+  const isPasswordValid = await bcrypt.compare(payload.password, user.password);
+
+  if (!isPasswordValid) {
+    throw new AppError(httpStatus.UNAUTHORIZED, 'Invalid email or password');
+  }
+
+  const jwtPayload = {
+    email: user.email,
+    role: user.role,
+  };
+
+  const token = jwt.sign(jwtPayload, config.jwt_secret as string, {
+    expiresIn: config.jwt_expires_in as string,
+  });
+
+  // Remove password from response
+  const userResponse = user.toObject();
+  delete userResponse.password;
+
+  return { token, user: userResponse };
 };
 
 const getUserFromDB = async (email: string) => {
@@ -211,6 +250,7 @@ const adminStats = async () => {
 
 export const AuthService = {
   getToken,
+  login,
   getAllUserFromDB,
   getUserFromDB,
   updateUserIntoDB,

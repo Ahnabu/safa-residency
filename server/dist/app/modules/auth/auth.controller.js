@@ -28,6 +28,16 @@ const getToken = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 
         data: user
     });
 }));
+const login = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { user, token } = yield auth_service_1.AuthService.login(req.body);
+    (0, sendResponse_1.default)(res, {
+        success: true,
+        statusCode: http_status_1.default.OK,
+        message: "Login successful",
+        token: token,
+        data: user
+    });
+}));
 const getAllUser = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield auth_service_1.AuthService.getAllUserFromDB(req.query);
     (0, sendResponse_1.default)(res, {
@@ -77,11 +87,35 @@ const getAdminStats = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, 
         data: result
     });
 }));
+const updateOwnProfile = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { email } = req.user;
+    const result = yield auth_service_1.AuthService.updateOwnProfile(email, req.body);
+    (0, sendResponse_1.default)(res, {
+        success: true,
+        statusCode: http_status_1.default.OK,
+        message: 'Profile updated successfully',
+        data: result
+    });
+}));
+const updatePassword = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { email } = req.user;
+    const { currentPassword, newPassword } = req.body;
+    const result = yield auth_service_1.AuthService.updatePassword(email, currentPassword, newPassword);
+    (0, sendResponse_1.default)(res, {
+        success: true,
+        statusCode: http_status_1.default.OK,
+        message: 'Password updated successfully',
+        data: result
+    });
+}));
 exports.AuthController = {
     getToken,
+    login,
     getAllUser,
     updateUser,
     getUserByEmail,
     deleteUser,
-    getAdminStats
+    getAdminStats,
+    updateOwnProfile,
+    updatePassword
 };

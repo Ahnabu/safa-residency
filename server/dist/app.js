@@ -12,7 +12,12 @@ const app = (0, express_1.default)();
 //const port = 3000
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded());
-const allowedOrigins = ['https://safaresidency.com', 'https://www.safaresidency.com', 'http://localhost:5173'];
+const allowedOrigins = [
+    'https://safa-residency-bd4f2.firebaseapp.com',
+    'https://safa-residency-bd4f2.web.app',
+    'https://safaresidency.com',
+    'http://localhost:5173'
+];
 const corsOptions = {
     origin: (origin, callback) => {
         if (!origin || allowedOrigins.indexOf(origin) !== -1) {

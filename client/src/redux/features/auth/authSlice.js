@@ -22,32 +22,51 @@ const initialState = {
 
 export const createUser = createAsyncThunk(
   "authSlice/createUser",
-  async ({ payload, getToken }) => {
-    const userCredential = await createUserWithEmailAndPassword(
-      auth,
-      payload?.email,
-      payload?.password
-    );
-    await updateProfile(auth.currentUser, {
-      displayName: payload?.name,
-    });
+  async ({ payload, getToken, useBackendAuth = false }) => {
+    if (useBackendAuth) {
+      // Register user in backend only
+      const response = await getToken(payload).unwrap();
+      return {
+        user: response.data,
+        token: response.token
+      };
+    } else {
+      // Register with Firebase (current flow)
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        payload?.email,
+        payload?.password
+      );
+      await updateProfile(auth.currentUser, {
+        displayName: payload?.name,
+      });
 
-    const userData = await getTokenFromDB( userCredential.user, getToken, payload);
-    return userData;
+      const userData = await getTokenFromDB( userCredential.user, getToken, payload);
+      return userData;
+    }
   }
 );
 
 export const loginUser = createAsyncThunk(
   "authSlice/loginUser",
-  async ({ email, password, getToken }) => {
-    const userCredential = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-
-    const userData = await getTokenFromDB(userCredential.user, getToken);
-    return userData;
+  async ({ email, password, getToken, useBackendAuth = true }) => {
+    if (useBackendAuth) {
+      // Use backend authentication
+      const response = await getToken({ email, password }).unwrap();
+      return {
+        user: response.data,
+        token: response.token
+      };
+    } else {
+      // Use Firebase authentication (fallback)
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const userData = await getTokenFromDB(userCredential.user, getToken);
+      return userData;
+    }
   }
 );
 

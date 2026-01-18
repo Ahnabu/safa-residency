@@ -16,6 +16,18 @@ const getToken = catchAsync(async(req, res) => {
     })
 })
 
+const login = catchAsync(async(req, res) => {
+    const { user, token } = await AuthService.login(req.body);
+
+    sendResponse(res, {
+        success: true,
+        statusCode: httpStatus.OK,
+        message: "Login successful",
+        token: token,
+        data: user
+    })
+})
+
 const getAllUser = catchAsync(async(req, res) => {
     const result = await AuthService.getAllUserFromDB(req.query)
     
@@ -100,6 +112,7 @@ const updatePassword = catchAsync(async(req, res)=>{
 
 export const AuthController = {
     getToken,
+    login,
     getAllUser,
     updateUser,
     getUserByEmail,

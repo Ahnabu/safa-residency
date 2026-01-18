@@ -9,6 +9,13 @@ const authApi = baseApi.injectEndpoints({
         body: userInfo,
       }),
     }),
+    login: builder.mutation({
+      query: (credentials) => ({
+        url: '/login',
+        method: 'POST',
+        body: credentials,
+      }),
+    }),
     getAllUsers: builder.query({
       query:(args) =>{
         const params = new URLSearchParams()
@@ -88,7 +95,8 @@ const authApi = baseApi.injectEndpoints({
 })
 
 export const {
-  useGetTokenMutation, 
+  useGetTokenMutation,
+  useLoginMutation,
   useGetAdminStatsQuery, 
   useGetSingleUserQuery, 
   useGetAllUsersQuery, 

@@ -220,7 +220,7 @@ node verify-migration.js
 - `PATCH /api/bookings/:id` - Update booking status
 - `DELETE /api/bookings/:id` - Cancel booking
 
-For complete API documentation, see [server/README.md](server/README.md)
+For complete API documentation, see [server/README.md]([server/README.md](https://github.com/Ahnabu/safa-residency/blob/main/server/Readme.Md))
 
 ## 🚀 Deployment
 
@@ -252,9 +252,10 @@ npm test
 
 ## 📱 Screenshots
 
-[Add screenshots of your application here]
+<img width="1700" height="4127" alt="image" src="https://github.com/user-attachments/assets/95ee4403-6365-4bb8-b74d-5cae47da04e1" />
 
-## 🎯 Roadmap
+
+## 🎯 Roadmap (for developers)
 
 - [ ] Add WhatsApp notification integration
 - [ ] Implement review and rating system

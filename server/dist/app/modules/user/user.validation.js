@@ -28,10 +28,8 @@ const updatePasswordValidationSchema = zod_1.z.object({
     })
 });
 const loginValidationSchema = zod_1.z.object({
-    body: zod_1.z.object({
-        email: zod_1.z.string({ required_error: 'email is required' }).email(),
-        password: zod_1.z.string({ required_error: 'password is required' })
-    })
+    email: zod_1.z.string({ required_error: 'email is required' }).email(),
+    password: zod_1.z.string({ required_error: 'password is required' })
 });
 exports.UserValidation = {
     createUserValidationSchema,

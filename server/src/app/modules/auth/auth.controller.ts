@@ -86,6 +86,9 @@ const getAdminStats = catchAsync(async(req, res)=>{
 })
 
 const updateOwnProfile = catchAsync(async(req, res)=>{
+    if (!req.user?.email) {
+        throw new Error('User not authenticated');
+    }
     const { email } = req.user;
     const result = await AuthService.updateOwnProfile(email, req.body);
     
@@ -98,6 +101,9 @@ const updateOwnProfile = catchAsync(async(req, res)=>{
 })
 
 const updatePassword = catchAsync(async(req, res)=>{
+    if (!req.user?.email) {
+        throw new Error('User not authenticated');
+    }
     const { email } = req.user;
     const { currentPassword, newPassword } = req.body;
     const result = await AuthService.updatePassword(email, currentPassword, newPassword);

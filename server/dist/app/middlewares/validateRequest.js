@@ -14,9 +14,16 @@ const validateRequest = (schema) => {
         try {
             // validation check
             // if everything all right -> next()
-            yield schema.parseAsync({
-                body: req.body
-            });
+            // Try to parse with body wrapper first, if fails try direct body
+            try {
+                yield schema.parseAsync({
+                    body: req.body
+                });
+            }
+            catch (e) {
+                // If schema doesn't have 'body' key, validate req.body directly
+                yield schema.parseAsync(req.body);
+            }
             next();
         }
         catch (err) {

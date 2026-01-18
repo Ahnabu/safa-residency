@@ -88,6 +88,10 @@ const getAdminStats = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, 
     });
 }));
 const updateOwnProfile = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
+    if (!((_a = req.user) === null || _a === void 0 ? void 0 : _a.email)) {
+        throw new Error('User not authenticated');
+    }
     const { email } = req.user;
     const result = yield auth_service_1.AuthService.updateOwnProfile(email, req.body);
     (0, sendResponse_1.default)(res, {
@@ -98,6 +102,10 @@ const updateOwnProfile = (0, catchAsync_1.default)((req, res) => __awaiter(void 
     });
 }));
 const updatePassword = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    var _b;
+    if (!((_b = req.user) === null || _b === void 0 ? void 0 : _b.email)) {
+        throw new Error('User not authenticated');
+    }
     const { email } = req.user;
     const { currentPassword, newPassword } = req.body;
     const result = yield auth_service_1.AuthService.updatePassword(email, currentPassword, newPassword);

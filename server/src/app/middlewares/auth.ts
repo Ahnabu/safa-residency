@@ -9,10 +9,15 @@ import config from '../config';
 import { User } from '../modules/user/user.model';
 import sendResponse from '../utils/sendResponse';
 
+interface CustomJwtPayload extends JwtPayload {
+  email: string;
+  role: TRole;
+}
+
 declare global {
   namespace Express {
     interface Request {
-      user?: JwtPayload;
+      user?: CustomJwtPayload;
     }
   }
 }
@@ -40,7 +45,7 @@ const auth = (...userRoles: TRole[]) => {
         throw new AppError(httpStatus.UNAUTHORIZED, 'You are not authorized!');
       }
 
-      req.user = decoded as JwtPayload;
+      req.user = decoded as CustomJwtPayload;
       next();
     } catch (err) {
       sendResponse(res, {

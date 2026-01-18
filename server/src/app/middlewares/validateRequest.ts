@@ -5,10 +5,18 @@ const validateRequest = (schema: AnyZodObject) => {
     return async(req: Request, res: Response, next: NextFunction) =>{
         try{
             // validation check
-            // if everything all right -> next()
-            await schema.parseAsync({
-                body: req.body
-            })
+            // Check if schema expects nested body or direct body
+            const schemaKeys = Object.keys(schema.shape);
+            
+            if (schemaKeys.includes('body')) {
+                // Schema expects nested body structure
+                await schema.parseAsync({
+                    body: req.body
+                })
+            } else {
+                // Schema expects direct body
+                await schema.parseAsync(req.body)
+            }
             next()
         }catch(err){
             next(err)
